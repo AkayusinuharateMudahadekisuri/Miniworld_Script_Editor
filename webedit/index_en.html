@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Script Miniworld Editor</title>
+  <link href="./css/app.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div id="app">
+    <div class="menu-wrapper">
+      <ul class="menu-list clearfix">
+        <!--Theme-->
+        <li class="menu-item">
+          <div class="theme-wrapper menu-item-wrapper" id="themeWrapper">
+            <button class="theme-btn menu-item-btn" id="themeBtn" style="font-family: 'Space Mono', monospace;">Chủ
+              Đề</button>
+            <div class="theme-inner menu-item-inner" id="themeInner">
+              <ul class="theme-list">
+                <li class="theme-item" data-theme="textmate">TextMate</li>
+                <li class="theme-item" data-theme="monokai">Monokai</li>
+                <li class="theme-item" data-theme="eclipse">Eclipse</li>
+                <li class="theme-item" data-theme="ambiance">Ambiance</li>
+                <li class="theme-item" data-theme="sqlserver">SQLServer</li>
+                <li class="theme-item" data-theme="github">Github</li>
+                <li class="theme-item" data-theme="solarized_light">Solarized_Light</li>
+                <li class="theme-item" data-theme="solarized_dark">Solarized_Dark</li>
+                <li class="theme-item" data-theme="tomorrow_night_bright">Tomorrow_Night_Bright</li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <!--Insert-->
+        <li class="menu-item">
+          <div class="insert-wrapper menu-item-wrapper" id="insertWrapper">
+            <button class="insert-btn menu-item-btn" id="insertBtn"
+              style="font-family: 'Space Mono', monospace;">Chèn</button>
+            <div class="insert-inner menu-item-inner not-focus-hide en" id="insertInner">
+              <div class="insert-inner-top" id="insertInnerTop"><i class="close-icon"></i></div>
+              <div class="insert-inner-content">
+                <!--Insert-->
+                <ul class="insert-list parent">
+                  <li class="insert-item" data-insert-type="variable">Tạo Biến</li>
+                  <li class="insert-item" data-insert-type="func">Tạo Hàm</li>
+                  <li class="insert-item" data-insert-type="assert">Tạo Lệnh Tiến Trình</li>
+                  <li class="insert-item" data-insert-type="loop">Tạo Lệnh Vòng Lặp</li>
+                  <li class="insert-item" data-insert-type="table">Tạo Bảng</li>
+                  <li class="insert-item" data-insert-type="tools">Tạo Công Cụ</li>
+                  <li class="insert-item" data-insert-type="template">Tạo Mẫu</li>
+                </ul>
+                <!--Insert-->
+                <ul class="insert-list child" data-parent-type="variable" style="display: none;">
+                  <li class="insert-item" data-insert-type="variable-global">Biến Toàn Cầu</li>
+                  <li class="insert-item" data-insert-type="variable-local">Biến Cục Bộ</li>
+                </ul>
+                <ul class="insert-list child" data-parent-type="func" style="display: none;">
+                  <li class="insert-item" data-insert-type="func-global">Hàm Toàn Cầu</li>
+                  <li class="insert-item" data-insert-type="func-local">Hàm Cục Bộ</li>
+                </ul>
+                <ul class="insert-list child" data-parent-type="assert" style="display: none;">
+                  <li class="insert-item" data-insert-type="assert-if">Câu Lệnh If</li>
+                  <li class="insert-item" data-insert-type="assert-ifelse">Câu Lệnh If..Else</li>
+                  <li class="insert-item" data-insert-type="assert-ifelseif">Câu Lệnh If..Elseif</li>
+                </ul>
+                <ul class="insert-list child" data-parent-type="loop" style="display: none;">
+                  <li class="insert-item" data-insert-type="loop-for">Câu Lệnh For</li>
+                  <li class="insert-item" data-insert-type="loop-while">Câu Lệnh While</li>
+                  <li class="insert-item" data-insert-type="loop-repeatUntil">Câu Lệnh Repeat..Until</li>
+                </ul>
+                <ul class="insert-list child" data-parent-type="table" style="display: none;">
+                  <li class="insert-item" data-insert-type="table-global">Bảng Toàn Cầu</li>
+                  <li class="insert-item" data-insert-type="table-local">Bảng Cục Bộ</li>
+                </ul>
+                <ul class="insert-list child" data-parent-type="tools" style="display: none;">
+                  <li class="insert-item" data-insert-type="toolstablehelp">Công Cụ Tools Table Help</li>
+                  <li class="insert-item" data-insert-type="chukyakay">Chữ Ký</li>
+                </ul>
+                <ul class="insert-list child" data-parent-type="template" style="display: none;">
+                  <li class="insert-item" data-insert-type="doublejump">Double Jump</li>
+                  <li class="insert-item" data-insert-type="speedcommand">Speed Command</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <!--FontSize-->
+        <li class="menu-item">
+          <div class="font-wrapper menu-item-wrapper" id="fontWrapper">
+            <button class="font-btn menu-item-btn" id="fontBtn" style="font-family: 'Space Mono', monospace;">Độ Lớn
+              Phông</button>
+            <div class="font-inner menu-item-inner" id="fontInner">
+              <ul class="font-list">
+                <li class="font-item" data-size="12px">12px</li>
+                <li class="font-item" data-size="13px">13px</li>
+                <li class="font-item" data-size="14px">14px</li>
+                <li class="font-item" data-size="15px">15px</li>
+                <li class="font-item" data-size="16px">16px</li>
+                <li class="font-item" data-size="18px">18px</li>
+                <li class="font-item" data-size="20px">20px</li>
+                <li class="font-item"><input id="fontsizechooser" type="number" onchange="acceptownfontsize()"></li>
+                <li class="font-item" id="AcceptFontSize" data-size="">Chấp Nhận Cỡ Phông</li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <!-- ID Subject -->
+        <li class="menu-item">
+          <div class="idlib-wrapper menu-item-wrapper" id="idlibWrapper">
+            <button class="idlib-btn menu-item-btn" id="idlibBtn" style="font-family: 'Space Mono', monospace;">Thư Viện
+              ID</button>
+            <div class="idlib-inner menu-item-inner" id="idlibInner">
+              <ul class="idlib-list">
+                <li class="idlib-item" data-type="1">Khối</li>
+                <li class="idlib-item" data-type="2">Vật Phẩm</li>
+                <li class="idlib-item" data-type="3">Sinh Vật</li>
+                <li class="idlib-item" data-type="4">Hiệu Ứng</li>
+                <li class="idlib-item" data-type="5">Âm Thanh</li>
+                <li class="idlib-item" data-type="6">Hiệu Ứng</li>
+                <li class="idlib-item" data-type="7">Phụ Ma</li>
+                <li class="idlib-item" data-type="8">Hành Động</li>
+                <li class="idlib-item" data-type="9">Sản Phẩm</li>
+                <li class="idlib-item" data-type="10">Kiểu Dáng</li>
+                <li class="idlib-item" data-type="11">Hình Ảnh</li>
+                <li class="idlib-item" data-type="12">UI</li>
+                <li class="idlib-item" data-type="13">Thành Phần</li>
+                <li class="idlib-item" data-type="14">Trạng Thái</li>
+                <li class="idlib-item" data-type="15">Đối Tượng</li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="menu-item">
+          <div class="thugian-wrapper menu-item-wrapper" id="thugianWrapper">
+            <button class="thugian-btn menu-item-btn" style="font-family: 'Space Mono', monospace;" id="thugianBtn">Thư
+              Giãn</button>
+            <div class="thugian-inner menu-item-inner" id="thugianInner">
+              <ul class="thugian-list">
+                <audio id="faded" loop>
+                  <source src="./Alan_Walker_Faded.mp3" type="">
+                </audio>
+                <audio id="ngonbam" loop>
+                  <source src="./hehe.mp3" type="">
+                </audio>
+                <li class="thugian-item" onclick="playFaded()">Faded</li>
+                <li class="thugian-item" onclick="playNgonBam()">Ngon Bấm:3</li>
+                <li class="thugian-item" onclick="getAudio()"><button class="akay-btn" onclick="document.getElementById('getFileMp3').click()">Mở Tệp Để Phát</button></li>
+                <li class="thugian-item" onclick="stopAll()">Dừng</li>
+                <li class="thugian-item" id="nowPlaying"style="padding:0 10px;line-height:30px;overflow:hidden;cursor:pointer;border-bottom:1px solid #ddd;background-color:#f0f0f0;cursor: auto;user-select: none;">Hãy Chọn Bài Nhạc</li>
+                <audio src="" id="MusicPlayer" loop></audio>
+                <input type='file' id="getFileMp3" style="display: none;" class="menu-item-btn" accept="audio/*">
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="menu-item">
+          <div class="more-wrapper menu-item-wrapper" id="moreWrapper">
+            <button class="more-btn menu-item-btn" style="font-family: 'Space Mono', monospace;" id="moreBtn">Ngoài</button>
+            <div class="more-inner menu-item-inner" id="moreInner">
+              <ul class="more-list">
+                <li class="more-item" onclick="toggleCodeEditor()">Blockly</li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!--Blockly-->
+    <iframe src="./Blockly_Lua/index.html" frameborder="0" id="blocklyLua"></iframe>
+    <!--Editor-->
+    <div id="codeEditor" class="code-editor"></div>
+    <!--Wiki-->
+    <div id="devWikiMask" class="dev-wiki-mask"></div>
+    <div id="scripttranferMask" class="scripttranfer-mask"></div>
+    <!--ID Search-->
+    <div id="searchIdWrapper" class="search-id-wrapper">
+      <div id="searchIdTitle" class="search-id-title">
+        <span>Công Cụ Tìm ID</span>
+        <i class="close-icon" id="searchIdCloseIcon"></i>
+      </div>
+      <div class="search-id-inner">
+        <div id="searchIdInpWrapper" class="search-id-inpwrapper">
+          <input type="text" class="search-id-input" placeholder="Hãy Nhập ID Khối Hoặc Tên" id="searchIdInput">
+          <div class="history-list" id="searchIdHistoryList"></div>
+        </div>
+        <div id="searchIdListContainer" class="search-id-container">
+          <!--ID Search List-->
+          <dl id="searchIdList">
+          </dl>
+        </div>
+      </div>
+    </div>
+    <!--Wiki Span-->
+    <div id="devWiki" class="dev-wiki">
+      <div id="devWikiBar" class="dev-wiki-bar"></div>
+      <iframe src="https://developers.miniworldgame.com/wiki/" frameborder="0"></iframe>
+      <button type="button" id="toggleWikiBtn" class="btn toggle-wiki-btn">Dev</br>Wiki</button>
+    </div>
+    <div id="scripttranfer" class="scripttranfer">
+      <div id="scripttranferBar" class="scripttranfer-bar"></div>
+      <iframe src="https://www.mini666.cn/#/" frameborder="0"></iframe>
+      <button type="button" id="togglescripttranferBtn" class="btn toggle-scripttranfer-btn">Script<br>Transfer</button>
+    </div>
+  </div>
+  <script src="./js/datapack.js"></script>
+  <script src="./js/insertCodeConfig.js"></script>
+  <script type="text/javascript" src="./js/app.js"></script>
+</body>
+
+</html>
